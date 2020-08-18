@@ -38,7 +38,7 @@ Getting Started
 
   ```ini
   #formshare.plugins = examplePlugin
-  formshare.plugins = odata odata_deployment
+  formshare.plugins = odata odata_access odata_deployment
       
   # OData plug-in settings
   odata.generator.url = https://services.formshare.org/odata_generator
