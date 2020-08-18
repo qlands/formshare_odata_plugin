@@ -1,0 +1,123 @@
+{% extends 'dashboard/page.jinja2' %}
+
+{% block titlesection %}{{ _('OData access settings') }}{% endblock titlesection %}
+
+{% block breadcrumbs %}
+    {% include 'odata/snippets/brdcrbs_users.jinja2' %}
+{% endblock breadcrumbs %}
+
+{% block mainsection %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    {% block assistant_list_heading %}
+                        <h2>{{ _('Assistants') }}</h2>
+                        <p>
+                            {{ _('Assistants assigned to ') }} "{{ formDetails.form_name }}" {{_('with cleaning privileges')}}
+                        </p>
+                        {#                    <div class="input-group">#}
+                        {#                        <input type="text" placeholder="{{ _('Search assistants') }} " class="input form-control">#}
+                        {#                        <span class="input-group-append"><button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> {{ _('Search') }}</button></span>#}
+                        {#                    </div>#}
+                    {% endblock assistant_list_heading %}
+                    <hr class="hr-line-dashed">
+                    {% block assistant_list_table %}
+                        <div class="clients-list">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    {% block assistant_list_table_header %}
+                                        <div class="grid-header">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="text-center">
+                                                        {{ _('Name') }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="text-center">
+                                                        {{ _('Email') }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="text-center">
+                                                        {{ _('With OData access') }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="text-center">
+                                                        {{ _('Actions') }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="hr-line-solid">
+                                        </div>
+                                    {% endblock assistant_list_table_header %}
+                                    {% block assistant_list_table_items %}
+                                        {% for assistant in assistants %}
+                                            {% set assistant_count = loop.index %}
+                                            {% include 'odata/snippets/assistant_item.jinja2' %}
+                                        {% endfor %}
+                                    {% endblock assistant_list_table_items %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock assistant_list_table %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock mainsection %}
+
+{% block scripts %}
+    {{ super }}
+    <script>
+        $(document).ready(function() {
+            $('.permission-button').click(function () {
+                var project_id = $( this ).attr('data-project');
+                var assistant_id = $( this ).attr('data-assistant');
+                var action = $( this ).attr('data-action');
+
+                var form = document.createElement('form');
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '{{ request.route_url('odata_change_access', userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id) }}');
+                form.style.display = 'hidden';
+
+                var crf = document.createElement("input"); //input element, text
+                crf.setAttribute('type',"text");
+                crf.setAttribute('name',"csrf_token");
+                crf.setAttribute('value','{{ request.session.get_csrf_token() }}');
+                form.appendChild(crf);
+
+                var project = document.createElement("input"); //input element, text
+                project.setAttribute('type',"text");
+                project.setAttribute('name',"project_id");
+                project.setAttribute('value',project_id);
+                form.appendChild(project);
+
+                var assistant = document.createElement("input"); //input element, text
+                assistant.setAttribute('type',"text");
+                assistant.setAttribute('name',"coll_id");
+                assistant.setAttribute('value',assistant_id);
+                form.appendChild(assistant);
+
+                var grant = document.createElement("input"); //input element, text
+                grant.setAttribute('type',"text");
+                grant.setAttribute('name',"odata_access");
+                if (action === "grant") {
+
+                    grant.setAttribute('value',"1");
+
+                }
+                else {
+                    grant.setAttribute('value',"0");
+                }
+                form.appendChild(grant);
+
+                document.body.appendChild(form);
+                form.submit();
+
+            });
+        });
+    </script>
+{% endblock %}

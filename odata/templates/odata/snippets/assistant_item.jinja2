@@ -1,0 +1,43 @@
+<span class="label">{{ assistant_count }}</span>
+<div class="row">
+    {% block assistant_item_data %}
+        {% block assistant_item_desc %}
+            <div class="col-md-3">
+                <div class="text-center">
+                    {{ assistant.coll_name }}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    {{ assistant.coll_email }}
+                </div>
+            </div>
+        {% endblock assistant_item_desc %}
+        {% block assistant_item_badges %}
+            <div class="col-md-3">
+                <div class="text-center">
+                    {% if assistant.odata_access == "1" %}
+                        <span class="badge badge-primary">{{ _('Yes') }}</span>
+                    {% else %}
+                        <span class="badge badge-danger">{{ _('No') }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock assistant_item_badges %}
+        {% block assistant_item_actions %}
+            <div class="col-md-3">
+                <div class="text-center">
+                    {% if assistant.odata_access == "1" %}
+                        <a data-project="{{ assistant.project_id }}" data-assistant="{{ assistant.coll_id }}" data-action="revoke" class="btn btn-white btn-sm change_password permission-button"><i class="fas fa-ban"></i> {{ _('Revoke access') }} </a>
+                    {% else %}
+                        <a data-project="{{ assistant.project_id }}" data-assistant="{{ assistant.coll_id }}" data-action="grant" class="btn btn-white btn-sm change_password permission-button"><i class="fas fa-key"></i> {{ _('Grant access') }} </a>
+                    {% endif %}
+                    {% if assistant.odata_access == "1" %}
+                        <a href="{{ request.route_url("odata_table_access",userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id, odatauser=assistant.coll_id) }}" class="btn btn-white btn-sm action-buttons"><i class="fas fa-pencil-alt text-warning"></i> {{ _('Set table permissions') }} </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock assistant_item_actions %}
+    {% endblock assistant_item_data %}
+</div>
+<hr>

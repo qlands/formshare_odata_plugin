@@ -1,0 +1,148 @@
+{% extends 'dashboard/page.jinja2' %}
+{% import 'dashboard/macros/form.jinja2' as form %}
+
+{% block css %}
+    {{ super() }}
+    {% cssresource request,'odata','footable' %}
+    {% cssresource request,'qlands','icheck' %}
+    <style>
+        .badge-super-light {background-color: #F6EFEFEF; color: white;}
+    </style>
+
+{% endblock css %}
+
+{% block topScripts %}
+    {{ super() }}
+    {% jsresource request,'odata','footable' %}
+    {% jsresource request,'qlands','icheck' %}
+{% endblock topScripts %}
+
+{% block titlesection %}{{ _('OData access for ') }}{% endblock titlesection %}
+
+{% block breadcrumbs %}
+    {% include 'odata/snippets/brdcrbs_user_access.jinja2' %}
+{% endblock breadcrumbs %}
+
+{% block mainsection %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h2>{{ _('Table accessed by ') }} {{ assistant.coll_name }} {{ _('through OData') }}</h2>
+                    <form method="post" action="{{ request.url }}">
+                        {{ form.secure_form(request) }}
+                        <button type="submit" name="grant-all" class="btn btn-w-m btn-primary">{{ _('Grant access to all tables') }}</button>
+                        <button type="submit" name="revoke-all" class="btn btn-w-m btn-danger">{{ _('Revoke access from all tables') }}</button>
+                    </form>
+                    <hr>
+                    <table id="useraccess">
+                        <thead>
+                        <tr>
+                            <th>{{ _('Access') }}</th>
+                            <th>{{ _('Table name') }}</th>
+                            <th>{{ _('Table description') }}</th>
+                            <th data-breakpoints="xs sm md">{{ _('Other privileges') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for table in tables %}
+                            {% include 'odata/snippets/access_item.jinja2' %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock mainsection %}
+
+{% block scripts %}
+    {{ super }}
+    <script>
+        $(document).ready(function() {
+            $('#useraccess').footable({
+                "on": {
+                    "ready.ft.table": function(e, ft){
+                        $('.i-checks').iCheck({
+                            checkboxClass: 'icheckbox_square-green',
+                            radioClass: 'iradio_square-green',
+                        });
+
+                        $('.i-checks').on('ifChecked', function(){
+                            var table_name = $( this ).attr('data-table-name');
+                            var action_type = "grant";
+                            var grant_type = "select";
+
+                            $.post( "{{ request.route_url("odata_table_action", userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id, odatauser=assistant.coll_id) }}", {
+                                csrf_token: "{{ request.session.get_csrf_token() }}",
+                                table: table_name,
+                                action: action_type,
+                                grant: grant_type,
+                            })
+                                .done(function() {
+                                    $("#actions_" + table_name).show();
+                                });
+                        });
+
+                        $('.i-checks').on('ifUnchecked', function(){
+                            var table_name = $( this ).attr('data-table-name');
+                            var action_type = "revoke";
+                            var grant_type = "select";
+
+                            $.post( "{{ request.route_url("odata_table_action", userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id, odatauser=assistant.coll_id) }}", {
+                                csrf_token: "{{ request.session.get_csrf_token() }}",
+                                table: table_name,
+                                action: action_type,
+                                grant: grant_type,
+                            })
+                                .done(function() {
+                                    $("#actions_" + table_name).hide();
+                                    var control = $(".grant-action-" + table_name)
+                                    control.children('span').removeClass("badge-primary");
+                                    control.children('span').addClass("badge-super-light");
+                                    control.children('span').attr("title", "{{ _('Click to grant update privileges') }}")
+                                    control.attr('data-action', "grant");
+                                });
+                        });
+
+                        $('.grant-action').click(function () {
+                            var table_name = $( this ).attr('data-table-name');
+                            var action_type = $( this ).attr('data-action');
+                            var grant_type = $( this ).attr('data-type');
+                            var control = $( this )
+
+                            $.post( "{{ request.route_url("odata_table_action", userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id, odatauser=assistant.coll_id) }}", {
+                                csrf_token: "{{ request.session.get_csrf_token() }}",
+                                table: table_name,
+                                action: action_type,
+                                grant: grant_type,
+                            })
+                                .done(function() {
+                                    if (action_type === "grant") {
+                                        control.children('span').removeClass("badge-super-light");
+                                        control.children('span').addClass("badge-primary");
+                                        control.children('span').attr("title", "{{ _('Click to revoke update privileges') }}")
+                                        control.attr('data-action', "revoke");
+                                    }
+                                    else {
+                                        control.children('span').removeClass("badge-primary");
+                                        control.children('span').addClass("badge-super-light");
+                                        control.children('span').attr("title", "{{ _('Click to grant update privileges') }}")
+                                        control.attr('data-action', "grant");
+                                    }
+                                });
+
+                        });
+
+                    }
+                }
+            });
+
+
+
+
+
+
+        });
+    </script>
+{% endblock %}

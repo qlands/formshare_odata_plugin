@@ -1,0 +1,36 @@
+<tr data-expanded="true">
+    <td><input type="checkbox" data-table-name="{{ table.name  }}" {% if table.odata_select %}checked{% endif %} class="i-checks" name="input[]"></td>
+    <td>{{ table.name }}</td>
+    <td>{{ table.desc }}</td>
+    {% if table.lookup or table.multi %}
+        <td>
+            <div id="actions_{{ table.name }}" {% if table.odata_select == False %}style="display: none;"{% endif %}>
+{#                {% if table.odata_insert %}#}
+{#                    <a data-table-name="{{ table.name }}" data-type="insert" data-action="revoke" class="grant-action grant-action-{{ table.name }}"><span title="{{ _('Click to revoke insert privileges') }}" class="badge badge-primary">{{ _('Insert') }}</span></a>#}
+{#                {% else %}#}
+{#                    <a data-table-name="{{ table.name }}" data-type="insert" data-action="grant" class="grant-action grant-action-{{ table.name }}"><span title="{{ _('Click to grant insert privileges') }}" class="badge badge-super-light">{{ _('Insert') }}</span></a>#}
+{#                {% endif %}#}
+                {% if table.odata_update %}
+                    <a data-table-name="{{ table.name }}" data-type="update" data-action="revoke" class="grant-action grant-action-{{ table.name }}"><span title="{{ _('Click to revoke update privileges') }}" class="badge badge-primary">{{ _('Update') }}</span></a>
+                {% else %}
+                    <a data-table-name="{{ table.name }}" data-type="update" data-action="grant" class="grant-action grant-action-{{ table.name }}"><span title="{{ _('Click to grant update privileges') }}" class="badge badge-super-light">{{ _('Update') }}</span></a>
+                {% endif %}
+{#                {% if table.odata_delete %}#}
+{#                    <a data-table-name="{{ table.name }}" data-type="delete" data-action="revoke" class="grant-action grant-action-{{ table.name }}"><span title="{{ _('Click to revoke delete privileges') }}" class="badge badge-primary">{{ _('Delete') }}</span></a>#}
+{#                {% else %}#}
+{#                    <a data-table-name="{{ table.name }}" data-type="delete" data-action="grant" class="grant-action grant-action-{{ table.name }}"><span title="{{ _('Click to grant delete privileges') }}" class="badge badge-super-light" >{{ _('Delete') }}</span></a>#}
+{#                {% endif %}#}
+            </div>
+        </td>
+    {% else %}
+        <td>
+            <div id="actions_{{ table.name }}" {% if table.odata_select == False %}style="display: none;"{% endif %}>
+                {% if table.odata_update %}
+                    <a data-table-name="{{ table.name }}" data-type="update" data-action="revoke" class="grant-action grant-action-{{ table.name }}"><span title="{{ _('Click to revoke update privileges') }}" class="badge badge-primary">{{ _('Update') }}</span></a>
+                {% else %}
+                    <a data-table-name="{{ table.name }}" data-type="update" data-action="grant" class="grant-action grant-action-{{ table.name }}"><span title="{{ _('Click to grant update privileges') }}" class="badge badge-super-light" >{{ _('Update') }}</span></a>
+                {% endif %}
+            </div>
+        </td>
+    {% endif %}
+</tr>

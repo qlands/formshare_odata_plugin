@@ -1,0 +1,56 @@
+{% extend_me %}
+
+{% block body_end %}
+    {{ super() }}
+    <div class="modal inmodal" id="odata_info" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ _('Close') }}</span></button>
+                    <h4 class="modal-title">OData</h4>
+                    <small class="font-bold">{{ _('An open protocol that allows the accesibility of data resources over the Internet') }}</small>
+                </div>
+                <div class="modal-body">
+                    <p><strong>OData</strong> {{ _('allow you to access your ODK data from third-party software over the Internet. For example you can:') }}
+                    <ul>
+                        <li>{{ _('Access your data from Microsoft Excel to create real-time graphs. See a tutorial') }} <a target="_blank" href="https://wem.io/documentation/tips-and-tricks/data/odata-excel2016/">{{ _('here') }}</a></li>
+                        <li>{{ _('Perform real-time data cleaning in Excel. See a tutorial') }} <a target="_blank" href="https://www.cdata.com/drivers/odata/excel/">{{ _('here') }}</a></li>
+                        <li>{{ _('Get more insigts from your data by pulling it from Power BI or Tableau. See a tutorial') }} <a target="_blank" href="https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata">{{ _('here') }}</a> {{ _('and') }} <a target="_blank" href="https://help.tableau.com/current/pro/desktop/en-us/examples_odata.htm">{{ _('here') }}</a></li>
+                        <li>{{ _('Generate real-time reports by connecting your ODK data with JasperServer. See a tutorial') }} <a target="_blank" href="https://www.cdata.com/kb/tech/odata-jdbc-jasperserver.rst">{{ _('here') }}</a></li>
+                    </ul>
+                    </p>
+                    <p><strong>OData</strong> {{ _('makes your ODK data interoperable. It offers many advantages, but most importantly it provides real-time access to your data therefore any analysis that you make has the latest submissions and the latest changes made to your data.') }}</p>
+                    <p>{{ _('There are two different versions of the OData protocol: V2 and V4. It will depend on your client (Tableau, Excel, etc.) which protocol to use.') }}</p>
+                    <p>{{ _('Once the entry points are ready you need to grant OData access to your assistants by clicking on the "Configure OData Access button".') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">{{ _('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body_end %}
+
+{% block other_odk_scripts %}
+    {{ super() }}
+    {% if formDetails.odata_status == 2 or formDetails.odata_status == 3  %}
+        <script>
+            $(document).ready(function() {
+                let interval = setInterval( checkODataStatus, 10000 );
+                function checkODataStatus()
+                {
+                    $(function() {
+                        $.getJSON("{{ request.route_url('odata_check',userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id, _query={'result_type': 'json'}) }}", function() {})
+                            .done(function(data) {
+                                if (data.result === 200 || data.result === 500)
+                                    location.reload();
+                            })
+                            .fail(function() {
+                                clearInterval(interval);
+                            });
+                    });
+                }
+            });
+        </script>
+    {% endif %}
+{% endblock other_odk_scripts %}

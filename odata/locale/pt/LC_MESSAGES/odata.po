@@ -1,0 +1,408 @@
+# Portuguese translations for odata.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the odata project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: odata 1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-08-06 12:17-0600\n"
+"PO-Revision-Date: 2020-08-01 19:27-0300\n"
+"Last-Translator: \n"
+"Language: pt\n"
+"Language-Team: pt <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: odata/plugin.py:220
+msgid ""
+"This assistant has an OData access and cannot be deleted. Deactivate it "
+"first before deleting it"
+msgstr ""
+"Este assistente possui um acesso OData e não pode ser excluído. "
+"Desative-o antes de excluí-lo"
+
+#: odata/views.py:149
+msgid ""
+"FormShare was not able to contact the Odata generator server. The QLands "
+"technical support has been informed about this."
+msgstr ""
+"O FormShare não foi capaz de contatar o servidor gerador de OData. O "
+"suporte técnico QLands foi informado sobre isso."
+
+#: odata/views.py:179 odata/views.py:249
+msgid "FormShare is generating the OData resource. It will be ready soon..."
+msgstr "O FormShare está gerando o recurso OData. Ele ficará pronto logo..."
+
+#: odata/views.py:207 odata/views.py:228
+msgid ""
+"FormShare was not able to generate the OData resource. The QLands "
+"technical support has been informed about this."
+msgstr ""
+"O FormShare não foi capaz de gerar o recurso OData. O suporte técnico "
+"QLands foi informado sobre isso."
+
+#: odata/views.py:262 odata/views.py:533 odata/views.py:777
+msgid "The OData resource is ready. Enjoy!"
+msgstr "O recurso OData está pronto. Aproveite!"
+
+#: odata/views.py:342 odata/views.py:433
+msgid ""
+"FormShare was not able to contact the OData generator server. The QLands "
+"technical support has been informed about this."
+msgstr ""
+"O FormShare não foi capaz de contatar o servidor gerador de OData. O "
+"suporte técnico QLands foi informado sobre isso."
+
+#: odata/views.py:367 odata/views.py:676 odata/views.py:815
+msgid "FormShare is still generating the OData resource. It will be ready soon..."
+msgstr "O FormShare ainda está gerando o recurso OData. Ele ficará pronto logo..."
+
+#: odata/views.py:571 odata/views.py:613 odata/views.py:651 odata/views.py:698
+#: odata/views.py:728 odata/views.py:795
+msgid ""
+"The process generated an error. The QLands technical support has been "
+"informed about this."
+msgstr ""
+"O processo gerou um erro. O suporte técnico QLands foi informado sobre "
+"isso."
+
+#: odata/views.py:756
+msgid ""
+"FormShare was not able check the status OData resource. The QLands "
+"technical support has been informed about this."
+msgstr ""
+"O FormShare não foi capaz de verificar o status do recurso OData. O "
+"suporte técnico QLands foi informado sobre isso."
+
+#: odata/views.py:900
+msgid "Error at revoking OData access. QLands has been informed"
+msgstr "Erro ao revogar o acesso OData. A QLands foi informada"
+
+#: odata/views.py:939
+msgid "Error at granting OData access. QLands has been informed"
+msgstr "Erro ao garantir acesso OData. A QLands foi informada"
+
+#: odata/templates/private.jinja2:4
+msgid "Formshare - My private page"
+msgstr "FormShare - Minha página privada"
+
+#: odata/templates/private.jinja2:8
+msgid "The body goes here"
+msgstr "O corpo vai aqui"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:9
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:27
+msgid "Close"
+msgstr "Fechar"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:11
+msgid ""
+"An open protocol that allows the accesibility of data resources over the "
+"Internet"
+msgstr ""
+"Um protocolo aberto que permite a acessibilidade de recursos de dados na "
+"internet"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:14
+msgid ""
+"allow you to access your ODK data from third-party software over the "
+"Internet. For example you can:"
+msgstr ""
+"permite que você acesse seus dados ODK a partir de um software externo na"
+" internet. Por exemplo, você pode:"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:16
+msgid ""
+"Access your data from Microsoft Excel to create real-time graphs. See a "
+"tutorial"
+msgstr ""
+"Acessar seus dados pelo Microsoft Excell para criar gráficos em tempo "
+"real. Veja um tutorial"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:16
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:17
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:18
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:19
+msgid "here"
+msgstr "aqui"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:17
+msgid "Perform real-time data cleaning in Excel. See a tutorial"
+msgstr "Executar limpeza de dados em tempo real no Excel. Veja um tutorial"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:18
+msgid ""
+"Get more insigts from your data by pulling it from Power BI or Tableau. "
+"See a tutorial"
+msgstr ""
+"Adquira maiores perspectivas pelos seus dados ao extraí-los pelo Power BI"
+" ou Tableau. Veja um tutorial"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:18
+msgid "and"
+msgstr "e"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:19
+msgid ""
+"Generate real-time reports by connecting your ODK data with JasperServer."
+" See a tutorial"
+msgstr ""
+"Gerar relatórios em tempo real ao conectar seus dados ODK com "
+"JasperServer. Veja um tutorial"
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:22
+msgid ""
+"makes your ODK data interoperable. It offers many advantages, but most "
+"importantly it provides real-time access to your data therefore any "
+"analysis that you make has the latest submissions and the latest changes "
+"made to your data."
+msgstr ""
+"torna seus dados ODK interoperáveis. Ele oferece diversas vantagens, mas "
+"mais importante, ele fornece acesso em tempo real aos seus dados, "
+"portanto qualquer análise que você faça possui as últimas submissões e as"
+" mudanças mais recentes feitas nos seus dados."
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:23
+msgid ""
+"There are two different versions of the OData protocol: V2 and V4. It "
+"will depend on your client (Tableau, Excel, etc.) which protocol to use."
+msgstr ""
+"Há duas versões diferentes do protocolo OData: V2 e V4. Dependerá do seu "
+"client (Tableau, Excel, etc.) qual protocolo usar."
+
+#: odata/templates/dashboard/projects/forms/form_details.jinja2:24
+msgid ""
+"Once the entry points are ready you need to grant OData access to your "
+"assistants by clicking on the \"Configure OData Access button\"."
+msgstr ""
+"Uma vez que os pontos de entrada estejam prontos, você precisa garantir "
+"acesso OData aos seus assistentes ao clicar em \"Configurar botão de "
+"acesso OData\"."
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:8
+msgid "Generate endpoints"
+msgstr "Gerar pontos de extremidade"
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:11
+msgid "Check if endpoints are ready"
+msgstr "Verificar se pontos de extremidade estão prontos"
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:14
+msgid "What is OData?"
+msgstr "O que é OData?"
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:17
+msgid "Configure OData Access"
+msgstr "Configurar acesso OData"
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:21
+msgid "V2 Endpoint:"
+msgstr "Rota de acesso V2:"
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:27
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:48
+msgid "Generate it"
+msgstr "Gerar"
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:30
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:51
+msgid "Creating URL. Please wait..."
+msgstr "Criando URL. Favor aguardar..."
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:33
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:54
+msgid ""
+"Error generating URL. QLands has been informed about this problem. You "
+"can try again"
+msgstr ""
+"Erro ao gerar URL. A QLands foi informada sobre este problema. Você pode "
+"tentar novamente"
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:37
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:58
+msgid "Copy to clipboard"
+msgstr "Copiar para área de transferência"
+
+#: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:42
+msgid "V4 Endpoint:"
+msgstr "Rota de acesso V4:"
+
+#: odata/templates/odata/user_access.jinja2:20
+msgid "OData access for "
+msgstr "Acesso OData para "
+
+#: odata/templates/odata/user_access.jinja2:31
+msgid "Table accessed by "
+msgstr "Tabela acessada por "
+
+#: odata/templates/odata/user_access.jinja2:31
+msgid "through OData"
+msgstr "através de OData"
+
+#: odata/templates/odata/user_access.jinja2:34
+msgid "Grant access to all tables"
+msgstr "Garantir acesso a todas as tabelas"
+
+#: odata/templates/odata/user_access.jinja2:35
+msgid "Revoke access from all tables"
+msgstr "Revogar acesso a todas as tabelas"
+
+# Verb or noun?
+#: odata/templates/odata/user_access.jinja2:41
+msgid "Access"
+msgstr "Acesso"
+
+#: odata/templates/odata/user_access.jinja2:42
+msgid "Table name"
+msgstr "Nome da tabela"
+
+#: odata/templates/odata/user_access.jinja2:43
+msgid "Table description"
+msgstr "Descrição da tabela"
+
+#: odata/templates/odata/user_access.jinja2:44
+msgid "Other privileges"
+msgstr "Outros privilégios"
+
+#: odata/templates/odata/snippets/access_item.jinja2:16
+#: odata/templates/odata/snippets/access_item.jinja2:31
+#: odata/templates/odata/user_access.jinja2:103
+#: odata/templates/odata/user_access.jinja2:130
+msgid "Click to grant update privileges"
+msgstr "Clique para garantir privilégios de atualização"
+
+#: odata/templates/odata/snippets/access_item.jinja2:14
+#: odata/templates/odata/snippets/access_item.jinja2:29
+#: odata/templates/odata/user_access.jinja2:124
+msgid "Click to revoke update privileges"
+msgstr "Clique para revogar privilégios de atualização"
+
+#: odata/templates/odata/snippets/brdcrbs_users.jinja2:17
+#: odata/templates/odata/users_and_groups.jinja2:3
+msgid "OData access settings"
+msgstr "Configurações de acesso OData"
+
+#: odata/templates/odata/users_and_groups.jinja2:15
+msgid "Assistants"
+msgstr "Assistentes"
+
+#: odata/templates/odata/users_and_groups.jinja2:17
+msgid "Assistants assigned to "
+msgstr "Assistentes atribuídos a "
+
+#: odata/templates/odata/users_and_groups.jinja2:17
+msgid "with cleaning privileges"
+msgstr "com privilégios de limpeza"
+
+#: odata/templates/odata/users_and_groups.jinja2:34
+msgid "Name"
+msgstr "Nome"
+
+#: odata/templates/odata/users_and_groups.jinja2:39
+msgid "Email"
+msgstr "E-mail"
+
+#: odata/templates/odata/users_and_groups.jinja2:44
+msgid "With OData access"
+msgstr "Com acesso OData"
+
+#: odata/templates/odata/users_and_groups.jinja2:49
+msgid "Actions"
+msgstr "Ações"
+
+#: odata/templates/odata/snippets/access_item.jinja2:14
+#: odata/templates/odata/snippets/access_item.jinja2:16
+#: odata/templates/odata/snippets/access_item.jinja2:29
+#: odata/templates/odata/snippets/access_item.jinja2:31
+msgid "Update"
+msgstr "Atualização"
+
+#: odata/templates/odata/snippets/assistant_item.jinja2:20
+msgid "Yes"
+msgstr "Sim"
+
+#: odata/templates/odata/snippets/assistant_item.jinja2:22
+msgid "No"
+msgstr "Não"
+
+#: odata/templates/odata/snippets/assistant_item.jinja2:31
+msgid "Revoke access"
+msgstr "Revogar acesso"
+
+#: odata/templates/odata/snippets/assistant_item.jinja2:33
+msgid "Grant access"
+msgstr "Garantir acesso"
+
+#: odata/templates/odata/snippets/assistant_item.jinja2:36
+msgid "Set table permissions"
+msgstr "Definir permissões de tabela"
+
+#: odata/templates/odata/snippets/brdcrbs_user_access.jinja2:2
+#: odata/templates/odata/snippets/brdcrbs_users.jinja2:2
+msgid "OData service"
+msgstr "Serviço OData"
+
+#: odata/templates/odata/snippets/brdcrbs_user_access.jinja2:5
+#: odata/templates/odata/snippets/brdcrbs_users.jinja2:5
+msgid "Dashboard"
+msgstr "Painel"
+
+#: odata/templates/odata/snippets/brdcrbs_user_access.jinja2:8
+#: odata/templates/odata/snippets/brdcrbs_users.jinja2:8
+msgid "Projects"
+msgstr "Projetos"
+
+#: odata/templates/odata/snippets/brdcrbs_user_access.jinja2:17
+msgid "OData users"
+msgstr "Usuários OData"
+
+#: odata/templates/odata/snippets/brdcrbs_user_access.jinja2:20
+msgid "OData access for"
+msgstr "Acesso OData para"
+
+#~ msgid ""
+#~ "Access you data from Microsoft Excel "
+#~ "to create real-time graphs. See a"
+#~ " tutorial"
+#~ msgstr ""
+#~ "Acesse seus dados no Microsoft Excel "
+#~ "para criar gráficos em tempo real. "
+#~ "Veja um tutorial"
+
+#~ msgid ""
+#~ "makes your ODK data interoperable. It"
+#~ " offers many advantages, but most "
+#~ "importantly it provides real-time access"
+#~ " to your data therefore any analysis"
+#~ " you make has the latest submissions"
+#~ " and the latest changes made to "
+#~ "your data."
+#~ msgstr ""
+#~ "torna seus dados ODK interoperáveis. Ele"
+#~ " oferece diversas vantagens, mas mais "
+#~ "importante, ele fornece acesso em tempo"
+#~ " real aos seus dados, portanto "
+#~ "qualquer análise que você faça possui"
+#~ " as submissões e modificações mais "
+#~ "recentes efetuadas nos seus dados."
+
+#~ msgid "What is OData"
+#~ msgstr "O que é OData"
+
+#~ msgid "Error generating URL. QLands has been informed about this problem"
+#~ msgstr "Erro ao gerar URL. A QLands foi informada sobre este problema"
+
+#~ msgid "OData settings"
+#~ msgstr "Configurações OData"
+
+#~ msgid "OData access configuration"
+#~ msgstr "Configuração de acesso OData"
+
+#~ msgid "OData configuration"
+#~ msgstr "Configuração OData"
+
