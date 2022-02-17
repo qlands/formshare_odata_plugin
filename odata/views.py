@@ -5,6 +5,7 @@ from formshare.processes.db import (
     get_form_details,
     get_assistant_password,
     get_form_directory,
+    get_project_from_assistant,
 )
 from formshare.models import (
     Odkform,
@@ -89,7 +90,9 @@ class ODataGenerateView(FormShareFormEditorView):
             )
             if xml_file is None:
                 odk_dir = get_odk_path(self.request)
-                form_directory = get_form_directory(self.request, self.project_id, self.form_id)
+                form_directory = get_form_directory(
+                    self.request, self.project_id, self.form_id
+                )
                 xml_file = os.path.join(
                     odk_dir, *["forms", form_directory, "repository", "create.xml"]
                 )
@@ -110,9 +113,7 @@ class ODataGenerateView(FormShareFormEditorView):
             odata_generator_password = self.request.registry.settings.get(
                 "odata.generator.password"
             )
-            odata_encryption_key = self.request.registry.settings.get(
-                "aes.key"
-            )
+            odata_encryption_key = self.request.registry.settings.get("aes.key")
             artifact_id = form_schema[-12:]
             request_id = str(uuid.uuid4())
             files = {"xml": open(xml_file, "rb")}
@@ -372,7 +373,9 @@ class ODataCheckView(FormShareFormEditorView):
                     else:
                         headers = [("Content-Type", "application/json")]
                         return Response(
-                            json_body={"result": 201}, status=200, headerlist=headers,
+                            json_body={"result": 201},
+                            status=200,
+                            headerlist=headers,
                         )
                 else:
                     if json_response["request_status"] == 0:
@@ -481,7 +484,8 @@ class ODataCheckView(FormShareFormEditorView):
                                     ):
                                         plugin_results4.append(
                                             plugin.after_create(
-                                                self.request, deployed_war_file_v4,
+                                                self.request,
+                                                deployed_war_file_v4,
                                             )
                                         )
 
@@ -537,7 +541,10 @@ class ODataCheckView(FormShareFormEditorView):
                                             return HTTPFound(next_page)
                                         else:
                                             headers = [
-                                                ("Content-Type", "application/json",)
+                                                (
+                                                    "Content-Type",
+                                                    "application/json",
+                                                )
                                             ]
                                             return Response(
                                                 json_body={"result": 200},
@@ -574,11 +581,15 @@ class ODataCheckView(FormShareFormEditorView):
                                                 )
                                             )
                                             return HTTPFound(
-                                                next_page, headers={"FS_error": "true"},
+                                                next_page,
+                                                headers={"FS_error": "true"},
                                             )
                                         else:
                                             headers = [
-                                                ("Content-Type", "application/json",)
+                                                (
+                                                    "Content-Type",
+                                                    "application/json",
+                                                )
                                             ]
                                             return Response(
                                                 json_body={"result": 500},
@@ -616,7 +627,8 @@ class ODataCheckView(FormShareFormEditorView):
                                             )
                                         )
                                         return HTTPFound(
-                                            next_page, headers={"FS_error": "true"},
+                                            next_page,
+                                            headers={"FS_error": "true"},
                                         )
                                     else:
                                         headers = [("Content-Type", "application/json")]
@@ -780,7 +792,9 @@ class ODataCheckView(FormShareFormEditorView):
                 else:
                     headers = [("Content-Type", "application/json")]
                     return Response(
-                        json_body={"result": 200}, status=200, headerlist=headers,
+                        json_body={"result": 200},
+                        status=200,
+                        headerlist=headers,
                     )
             else:
                 if int(r.get(redis_key)) == -1:
@@ -801,7 +815,9 @@ class ODataCheckView(FormShareFormEditorView):
                     else:
                         headers = [("Content-Type", "application/json")]
                         return Response(
-                            json_body={"result": 500}, status=200, headerlist=headers,
+                            json_body={"result": 500},
+                            status=200,
+                            headerlist=headers,
                         )
                 else:
                     if result_type == "web":
@@ -821,7 +837,9 @@ class ODataCheckView(FormShareFormEditorView):
                     else:
                         headers = [("Content-Type", "application/json")]
                         return Response(
-                            json_body={"result": 201}, status=200, headerlist=headers,
+                            json_body={"result": 201},
+                            status=200,
+                            headerlist=headers,
                         )
 
 
@@ -966,9 +984,14 @@ class ODataTableAccessView(FormShareFormAdminView):
             raise HTTPNotFound
 
         if self.request.method == "GET":
+            project_of_assistant = get_project_from_assistant(
+                self.request, self.user_id, self.project_id, odata_user
+            )
+            if project_of_assistant is None:
+                raise HTTPNotFound
             assistant = (
                 self.request.dbsession.query(Collaborator)
-                .filter(Collaborator.project_id == self.project_id)
+                .filter(Collaborator.project_id == project_of_assistant)
                 .filter(Collaborator.coll_id == odata_user)
                 .first()
             )
@@ -1029,15 +1052,20 @@ class ODataTableAccessView(FormShareFormAdminView):
                         log.error(
                             "Error while grating OData select access "
                             "on schema {} to user {} for table {}. Error: {}".format(
-                                form_schema, odata_user, a_table["name"], str(e),
+                                form_schema,
+                                odata_user,
+                                a_table["name"],
+                                str(e),
                             )
                         )
                 mark_changed(self.request.dbsession)
 
             if "revoke-all" in action_data.keys():
                 try:
-                    sql = "DELETE FROM {}.odatauseraccess WHERE user_name = '{}'".format(
-                        form_schema, odata_user
+                    sql = (
+                        "DELETE FROM {}.odatauseraccess WHERE user_name = '{}'".format(
+                            form_schema, odata_user
+                        )
                     )
                     self.request.dbsession.execute(sql)
                     mark_changed(self.request.dbsession)
@@ -1045,7 +1073,9 @@ class ODataTableAccessView(FormShareFormAdminView):
                     log.error(
                         "Error while revoking OData select access to all tables "
                         "on schema {} to user {}. Error: {}".format(
-                            form_schema, odata_user, str(e),
+                            form_schema,
+                            odata_user,
+                            str(e),
                         )
                     )
 
