@@ -314,7 +314,7 @@ class ODataAccess(plugins.SingletonPlugin):
         mapped_data = map_from_schema(res)
         if mapped_data:
             if mapped_data.get("odata_status", 0) == 1:
-                if privilege_data["coll_privileges"] == "1":
+                if privilege_data["coll_can_clean"] == "1":
                     privilege_data["odata_access"] = 0
         return privilege_data, True, ""
 
@@ -339,7 +339,7 @@ class ODataAccess(plugins.SingletonPlugin):
         mapped_data = map_from_schema(res)
         if mapped_data:
             if mapped_data.get("odata_status", 0) == 1:
-                if privilege_data["coll_privileges"] == "1":
+                if privilege_data["coll_can_clean"] == "1":
                     sql = "DELETE FROM {}.odatauser WHERE user_name = '{}'".format(
                         mapped_data["form_schema"], assistant_id
                     )

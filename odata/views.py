@@ -864,7 +864,7 @@ class ODataUsersView(FormShareFormAdminView):
             .filter(Formacces.form_project == self.project_id)
             .filter(Formacces.form_id == self.form_id)
             .filter(Collaborator.coll_active == 1)
-            .filter(Formacces.coll_privileges > 1)
+            .filter(Formacces.coll_can_clean == 1)
             .all()
         )
 
