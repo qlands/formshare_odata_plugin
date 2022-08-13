@@ -6,6 +6,7 @@ from formshare.processes.db import (
     get_assistant_password,
     get_form_directory,
     get_project_from_assistant,
+    get_project_details,
 )
 from formshare.models import (
     Odkform,
@@ -847,6 +848,7 @@ class ODataUsersView(FormShareFormAdminView):
     def process_view(self):
         FormShareFormAdminView.process_view(self)
         form_schema = get_form_schema(self.request, self.project_id, self.form_id)
+        project_details = get_project_details(self.request, self.project_id)
         if form_schema is None:
             raise HTTPNotFound
         if self.form_details.get("odata_status", 0) != 1:
@@ -876,7 +878,11 @@ class ODataUsersView(FormShareFormAdminView):
             "GROUP BY {0}.odatagroup.group_id, group_name".format(form_schema)
         ).fetchall()
 
-        return {"assistants": assistants, "groups": groups}
+        return {
+            "assistants": assistants,
+            "groups": groups,
+            "projectDetails": project_details,
+        }
 
 
 class ODataChangeAccessView(FormShareFormAdminView):
@@ -984,6 +990,7 @@ class ODataTableAccessView(FormShareFormAdminView):
             raise HTTPNotFound
 
         if self.request.method == "GET":
+            project_details = get_project_details(self.request, self.project_id)
             project_of_assistant = get_project_from_assistant(
                 self.request, self.user_id, self.project_id, odata_user
             )
@@ -1030,7 +1037,11 @@ class ODataTableAccessView(FormShareFormAdminView):
                                 else:
                                     a_table["odata_delete"] = False
 
-                return {"assistant": assistant_data, "tables": tables}
+                return {
+                    "assistant": assistant_data,
+                    "tables": tables,
+                    "projectDetails": project_details,
+                }
             else:
                 raise HTTPNotFound
         else:
