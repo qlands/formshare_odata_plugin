@@ -134,16 +134,20 @@ class ODataAccess(plugins.SingletonPlugin):
         return "odata"
 
     # Implements IAssistant
-    def before_create(self, request, user, project, assistant_data):
+    def before_creating_assistant(self, request, user, project, assistant_data):
         return assistant_data, True, ""
 
-    def after_create(self, request, user, project, assistant_data):
+    def after_creating_assistant(self, request, user, project, assistant_data):
         pass
 
-    def before_edit(self, request, user, project, assistant, assistant_data):
+    def before_editing_assistant(
+        self, request, user, project, assistant, assistant_data
+    ):
         return assistant_data, True, ""
 
-    def after_edit(self, request, user, project, assistant, assistant_data):
+    def after_editing_assistant(
+        self, request, user, project, assistant, assistant_data
+    ):
         if assistant_data.get("coll_active", 0) == 0:
             res = (
                 request.dbsession.query(
@@ -185,7 +189,7 @@ class ODataAccess(plugins.SingletonPlugin):
                         except Exception as e:
                             log.error("ODataAccess Error: {}".format(str(e)))
 
-    def before_delete(self, request, user, project, assistant):
+    def before_deleting_assistant(self, request, user, project, assistant):
         res = (
             request.dbsession.query(Odkform.form_schema, Odkform.extras)
             .filter(Odkform.project_id == Formacces.form_project)
@@ -223,13 +227,17 @@ class ODataAccess(plugins.SingletonPlugin):
                 ),
             )
 
-    def after_delete(self, request, user, project, assistant):
+    def after_deleting_assistant(self, request, user, project, assistant):
         pass
 
-    def before_password_change(self, request, user, project, assistant, password):
+    def before_assistant_password_change(
+        self, request, user, project, assistant, password
+    ):
         return True, ""
 
-    def after_password_change(self, request, user, project, assistant, password):
+    def after_assistant_password_change(
+        self, request, user, project, assistant, password
+    ):
         res = (
             request.dbsession.query(Odkform.form_schema, Odkform.extras)
             .filter(Odkform.project_id == Formacces.form_project)
@@ -257,7 +265,7 @@ class ODataAccess(plugins.SingletonPlugin):
 
     # Implements IFormAccess
 
-    def before_giving_access(
+    def before_giving_access_to_assistant(
         self,
         request,
         user,
@@ -281,7 +289,7 @@ class ODataAccess(plugins.SingletonPlugin):
                 privilege_data["odata_access"] = 0
         return privilege_data, True, ""
 
-    def after_giving_access(
+    def after_giving_access_to_assistant(
         self,
         request,
         user,
@@ -293,7 +301,7 @@ class ODataAccess(plugins.SingletonPlugin):
     ):
         pass
 
-    def before_editing_access(
+    def before_editing_assistant_access(
         self,
         request,
         user,
@@ -318,7 +326,7 @@ class ODataAccess(plugins.SingletonPlugin):
                     privilege_data["odata_access"] = 0
         return privilege_data, True, ""
 
-    def after_editing_access(
+    def after_editing_assistant_access(
         self,
         request,
         user,
@@ -348,12 +356,12 @@ class ODataAccess(plugins.SingletonPlugin):
                     except Exception as e:
                         log.error("ODataAccess Error: {}".format(str(e)))
 
-    def before_revoking_access(
+    def before_revoking_assistant_access(
         self, request, user, project, form, assistant_project, assistant_id
     ):
         return True, ""
 
-    def after_revoking_access(
+    def after_revoking_assistant_access(
         self, request, user, project, form, assistant_project, assistant_id
     ):
         res = (
