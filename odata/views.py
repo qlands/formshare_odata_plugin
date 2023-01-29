@@ -753,9 +753,10 @@ class ODataCheckView(FormShareFormEditorView):
                             )
             else:
                 update_status(-1)
+                error_data = json.loads(response.content)
                 log.error(
-                    "Error while requesting the OData generator for the status of request {}".format(
-                        odata_request
+                    "Error while requesting the OData generator for the status of request {}. Error No: {}. Data: {}".format(
+                        odata_request, response.status_code, error_data
                     )
                 )
                 if result_type == "web":
