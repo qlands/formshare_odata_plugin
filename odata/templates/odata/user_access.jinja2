@@ -4,7 +4,7 @@
 {% block css %}
     {{ super() }}
     {% cssresource request,'odata','footable' %}
-    {% cssresource request,'qlands','icheck' %}
+    {% cssresource request,'odata','icheck' %}
     <style>
         .badge-super-light {background-color: #F6EFEFEF; color: white;}
     </style>
@@ -14,7 +14,7 @@
 {% block topScripts %}
     {{ super() }}
     {% jsresource request,'odata','footable' %}
-    {% jsresource request,'qlands','icheck' %}
+    {% jsresource request,'odata','icheck' %}
 {% endblock topScripts %}
 
 {% block titlesection %}{{ _('OData access for ') }}{% endblock titlesection %}

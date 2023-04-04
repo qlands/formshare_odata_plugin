@@ -36,7 +36,8 @@ class odata(plugins.SingletonPlugin):
 
     def add_js_resources(self, config):
         odata_js = [
-            u.add_js_resource("odata", "footable", "footable/js/footable.min.js", None)
+            u.add_js_resource("odata", "footable", "footable/js/footable.min.js", None),
+            u.add_js_resource("odata", "icheck", "js/iCheck/icheck.min.js", None),
         ]
         return odata_js
 
@@ -44,7 +45,8 @@ class odata(plugins.SingletonPlugin):
         odata_css = [
             u.add_css_resource(
                 "odata", "footable", "footable/css/footable.bootstrap.min.css", None
-            )
+            ),
+            u.add_css_resource("odata", "icheck", "css/iCheck/blue.css", None),
         ]
         return odata_css
 
