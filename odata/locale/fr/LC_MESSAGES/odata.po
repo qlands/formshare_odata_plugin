@@ -7,87 +7,85 @@ msgid ""
 msgstr ""
 "Project-Id-Version: odata 1.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-30 12:22-0600\n"
+"POT-Creation-Date: 2020-08-06 12:46-0600\n"
 "PO-Revision-Date: 2020-08-06 21:56-0500\n"
-"Language-Team: fr <LL@li.org>\n"
+"Last-Translator: \n"
 "Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Generated-By: Babel 2.8.0\n"
-"Last-Translator: \n"
-"X-Generator: Poedit 2.4\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: odata/plugin.py:220
 msgid ""
 "This assistant has an OData access and cannot be deleted. Deactivate it "
 "first before deleting it"
 msgstr ""
-"Cet assistant a un accès OData et ne peut pas être supprimé. Désactivez-le "
-"avant de le supprimer"
+"Cet assistant a un accès OData et ne peut pas être supprimé. Désactivez-"
+"le avant de le supprimer"
 
-#: odata/views.py:140
+#: odata/views.py:149
 msgid ""
 "FormShare was not able to contact the Odata generator server. The QLands "
 "technical support has been informed about this."
 msgstr ""
-"FormShare n'a pas été en mesure de contacter le serveur générateur OData. "
-"Le support technique QLands a été informé de cela."
+"FormShare n'a pas été en mesure de contacter le serveur générateur OData."
+" Le support technique QLands a été informé de cela."
 
-#: odata/views.py:170 odata/views.py:240
+#: odata/views.py:179 odata/views.py:249
 msgid "FormShare is generating the OData resource. It will be ready soon..."
 msgstr "FormShare génère la ressource OData. Elle sera bientôt prête ..."
 
-#: odata/views.py:198 odata/views.py:219
+#: odata/views.py:207 odata/views.py:228
 msgid ""
-"FormShare was not able to generate the OData resource. The QLands technical "
-"support has been informed about this."
+"FormShare was not able to generate the OData resource. The QLands "
+"technical support has been informed about this."
 msgstr ""
-"FormShare n'a pas été en mesure de générer la ressource OData. Le support "
-"technique QLands a été informé de cela."
+"FormShare n'a pas été en mesure de générer la ressource OData. Le support"
+" technique QLands a été informé de cela."
 
-#: odata/views.py:253 odata/views.py:524 odata/views.py:768
+#: odata/views.py:262 odata/views.py:533 odata/views.py:777
 msgid "The OData resource is ready. Enjoy!"
 msgstr "La ressource OData est prête. Profitez-en bien!"
 
-#: odata/views.py:333 odata/views.py:424
+#: odata/views.py:342 odata/views.py:433
 msgid ""
 "FormShare was not able to contact the OData generator server. The QLands "
 "technical support has been informed about this."
 msgstr ""
-"FormShare n'a pas été en mesure de contacter le serveur générateur OData. "
-"Le support technique QLands a été informé de cela."
+"FormShare n'a pas été en mesure de contacter le serveur générateur OData."
+" Le support technique QLands a été informé de cela."
 
-#: odata/views.py:358 odata/views.py:667 odata/views.py:806
-msgid ""
-"FormShare is still generating the OData resource. It will be ready soon..."
+#: odata/views.py:367 odata/views.py:676 odata/views.py:815
+msgid "FormShare is still generating the OData resource. It will be ready soon..."
 msgstr ""
 "FormShare est toujours en train de générer la ressource OData. Elle sera "
 "bientôt prête ..."
 
-#: odata/views.py:562 odata/views.py:604 odata/views.py:642 odata/views.py:689
-#: odata/views.py:719 odata/views.py:786
+#: odata/views.py:571 odata/views.py:613 odata/views.py:651 odata/views.py:698
+#: odata/views.py:728 odata/views.py:795
 msgid ""
 "The process generated an error. The QLands technical support has been "
 "informed about this."
 msgstr ""
-"Le processus a généré une erreur. Le support technique QLands a été informé "
-"de cela."
+"Le processus a généré une erreur. Le support technique QLands a été "
+"informé de cela."
 
-#: odata/views.py:747
+#: odata/views.py:756
 msgid ""
 "FormShare was not able check the status OData resource. The QLands "
 "technical support has been informed about this."
 msgstr ""
-"FormShare n'a pas été en mesure de vérifier l'état de la ressource OData. "
-"Le support technique QLands a été informé de cela."
+"FormShare n'a pas été en mesure de vérifier l'état de la ressource OData."
+" Le support technique QLands a été informé de cela."
 
-#: odata/views.py:891
+#: odata/views.py:900
 msgid "Error at revoking OData access. QLands has been informed"
 msgstr "Erreur lors de la révocation de l'accès OData. QLands a été informé"
 
-#: odata/views.py:930
+#: odata/views.py:939
 msgid "Error at granting OData access. QLands has been informed"
 msgstr "Erreur lors de l'attribution d'un accès OData. QLands a été informé"
 
@@ -125,8 +123,8 @@ msgid ""
 "Access your data from Microsoft Excel to create real-time graphs. See a "
 "tutorial"
 msgstr ""
-"Accédez à vos données à partir de Microsoft Excel pour créer des graphiques "
-"en temps réel. Regardez un tutoriel"
+"Accédez à vos données à partir de Microsoft Excel pour créer des "
+"graphiques en temps réel. Regardez un tutoriel"
 
 #: odata/templates/dashboard/projects/forms/form_details.jinja2:16
 #: odata/templates/dashboard/projects/forms/form_details.jinja2:17
@@ -143,11 +141,11 @@ msgstr ""
 
 #: odata/templates/dashboard/projects/forms/form_details.jinja2:18
 msgid ""
-"Get more insigts from your data by pulling it from Power BI or Tableau. See "
-"a tutorial"
+"Get more insigts from your data by pulling it from Power BI or Tableau. "
+"See a tutorial"
 msgstr ""
-"Retirez plus d'informations de vos données en les extrayant de Power BI ou "
-"de Tableau. Regardez un tutoriel"
+"Retirez plus d'informations de vos données en les extrayant de Power BI "
+"ou de Tableau. Regardez un tutoriel"
 
 #: odata/templates/dashboard/projects/forms/form_details.jinja2:18
 msgid "and"
@@ -155,8 +153,8 @@ msgstr "et"
 
 #: odata/templates/dashboard/projects/forms/form_details.jinja2:19
 msgid ""
-"Generate real-time reports by connecting your ODK data with JasperServer. "
-"See a tutorial"
+"Generate real-time reports by connecting your ODK data with JasperServer."
+" See a tutorial"
 msgstr ""
 "Générer des rapports en temps réel en connectant vos données ODK avec "
 "JasperServer. Regardez un tutoriel"
@@ -168,15 +166,15 @@ msgid ""
 "analysis that you make has the latest submissions and the latest changes "
 "made to your data."
 msgstr ""
-"rend vos données ODK interopérables. Il offre de nombreux avantages, mais "
-"surtout, il offre un accès en temps réel à vos données, par conséquent  "
-"toute analyse que vous faites a les dernières soumissions et les dernières "
-"modifications apportées à vos données."
+"rend vos données ODK interopérables. Il offre de nombreux avantages, mais"
+" surtout, il offre un accès en temps réel à vos données, par conséquent  "
+"toute analyse que vous faites a les dernières soumissions et les "
+"dernières modifications apportées à vos données."
 
 #: odata/templates/dashboard/projects/forms/form_details.jinja2:23
 msgid ""
-"There are two different versions of the OData protocol: V2 and V4. It will "
-"depend on your client (Tableau, Excel, etc.) which protocol to use."
+"There are two different versions of the OData protocol: V2 and V4. It "
+"will depend on your client (Tableau, Excel, etc.) which protocol to use."
 msgstr ""
 "Il existe deux versions différentes du protocole OData : V2 et V4. Le "
 "protocole à utiliser dépendra de votre client (Tableau, Excel, etc.)."
@@ -186,9 +184,9 @@ msgid ""
 "Once the entry points are ready you need to grant OData access to your "
 "assistants by clicking on the \"Configure OData Access button\"."
 msgstr ""
-"Une fois que les points d'entrée sont prêts, vous devez attribuer l'accès "
-"OData à vos assistants en cliquant sur le bouton « Configurer l'accès OData "
-"»."
+"Une fois que les points d'entrée sont prêts, vous devez attribuer l'accès"
+" OData à vos assistants en cliquant sur le bouton « Configurer l'accès "
+"OData »."
 
 #: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:8
 msgid "Generate endpoints"
@@ -223,11 +221,11 @@ msgstr "Création d'URL. Merci de patienter..."
 #: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:33
 #: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:54
 msgid ""
-"Error generating URL. QLands has been informed about this problem. You can "
-"try again"
+"Error generating URL. QLands has been informed about this problem. You "
+"can try again"
 msgstr ""
-"Erreur lors de la génération d'URL . QLands a été informé de ce problème. "
-"Vous pouvez réessayer"
+"Erreur lors de la génération d'URL . QLands a été informé de ce problème."
+" Vous pouvez réessayer"
 
 #: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:37
 #: odata/templates/dashboard/projects/forms/snippets/repository_tab.jinja2:58
@@ -369,3 +367,4 @@ msgstr "Utilisateurs OData"
 #: odata/templates/odata/snippets/brdcrbs_user_access.jinja2:20
 msgid "OData access for"
 msgstr "Accès OData pour"
+
