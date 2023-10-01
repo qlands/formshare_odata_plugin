@@ -52,5 +52,14 @@
                 }
             });
         </script>
+    {% else %}
+        <script>
+            $(document).ready(function() {
+                $("#odata_generate").click(function() {
+                    $("#busy").show();
+                    location.href = "{{ request.route_url('odata_generate',userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id) }}";
+                });
+            });
+        </script>
     {% endif %}
 {% endblock other_odk_scripts %}

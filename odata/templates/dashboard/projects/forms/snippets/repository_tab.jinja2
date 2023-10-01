@@ -5,7 +5,7 @@
     <b style="color: #1c84c6">OData</b>
     {% if projectDetails.access_type < 4 %}
         {% if formDetails.odata_status == 0 or not formDetails.odata_status or formDetails.odata_status == -1 %}
-            <a id="odata_generate" class="btn btn-white btn-bitbucket" href="{{ request.route_url('odata_generate',userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id) }}" title="{{ _('Generate endpoints') }}"><i class="fas fa-sync-alt"></i></a>
+            <a id="odata_generate" class="btn btn-white btn-bitbucket" href="#" title="{{ _('Generate endpoints') }}"><i class="fas fa-sync-alt"></i></a>
         {% endif %}
         {% if formDetails.odata_status == 2 or formDetails.odata_status == 3  %}
             <a id="odata_check" class="btn btn-white btn-bitbucket" href="{{ request.route_url('odata_check',userid=projectDetails.owner, projcode=projectDetails.project_code, formid=formDetails.form_id) }}" title="{{ _('Check if endpoints are ready') }}"><i style="color: #1c84c6" class="fas fa-question"></i></a>
